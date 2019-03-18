@@ -420,17 +420,6 @@ static void disable_bms_irq(struct bms_irq *irq)
 
 static void disable_bms_irq_nosync(struct bms_irq *irq)
 {
-	if (irq->ready && !__test_and_set_bit(0, &irq->disabled)) {
-		disable_irq_nosync(irq->irq);
-		pr_debug("disabled irq %d\n", irq->irq);
-		if ((irq->is_wake) &&
-				__test_and_clear_bit(0, &irq->wake_enabled))
-			disable_irq_wake(irq->irq);
-	}
-}
-
-static void disable_bms_irq_nosync(struct bms_irq *irq)
-{
 	if (!__test_and_set_bit(0, &irq->disabled)) {
 		disable_irq_nosync(irq->irq);
 		pr_debug("disabled irq %d\n", irq->irq);
