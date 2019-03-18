@@ -63,7 +63,12 @@ enum {
 	RF_VERSION__99_OVERSEA_RESERVED1,
 };
 
-int get_pcb_version(void);
-int get_rf_version(void);
+struct ddr_info{
+	char ddr_manufacture[64];
+	char ddr_row_info[8];
+};
+extern int get_pcb_version(void);
+extern int get_rf_version(void);
+extern int get_ddr_info(struct ddr_info *str);
 
 #endif /* _PCB_VERSION_H */
