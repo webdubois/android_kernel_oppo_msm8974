@@ -57,6 +57,12 @@ endif
         ifeq ($(CONFIG_MACH_N3),y)
         dtb-$(CONFIG_ARCH_MSM8974)	+= msm8974pro-ab-pm8941-n520x.dtb
         endif
+        ifeq ($(CONFIG_MACH_ONYX),y)
+        dtb-$(CONFIG_ARCH_MSM8974)	+= msm8974pro-ab-pm8941-mtp_15055_HW_11.dtb
+        dtb-$(CONFIG_ARCH_MSM8974)	+= msm8974pro-ab-pm8941-mtp_15055_HW_12.dtb
+        dtb-$(CONFIG_ARCH_MSM8974)	+= msm8974pro-ab-pm8941-mtp_15055_HW_13.dtb
+        dtb-$(CONFIG_ARCH_MSM8974)	+= msm8974pro-ab-pm8941-mtp_15055_HW_14.dtb
+        dtb-$(CONFIG_ARCH_MSM8974)	+= msm8974pro-ab-pm8941-mtp_15055_HW_15.dtb        
         ifneq ($(CONFIG_MACH_OPPO),y)
         dtb-$(CONFIG_ARCH_MSM8974)	+= msm8974-v1-cdp.dtb
         dtb-$(CONFIG_ARCH_MSM8974)	+= msm8974-v1-fluid.dtb
