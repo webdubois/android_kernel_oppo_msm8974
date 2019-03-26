@@ -1168,7 +1168,6 @@ static struct gpiomux_setting cam_settings[] = {
 	},
 };
 
-#ifndef CONFIG_MACH_ONYX
 static struct gpiomux_setting hpmic_switch_active_config = {
 	.func = GPIOMUX_FUNC_GPIO,
 	.drv = GPIOMUX_DRV_8MA,
@@ -1191,7 +1190,6 @@ static struct gpiomux_setting external_suspended_config = {
 	.drv = GPIOMUX_DRV_2MA,
 	.pull = GPIOMUX_PULL_DOWN,
 };
-#endif
 
 #if defined (CONFIG_MACH_N3) || defined(CONFIG_MACH_ONYX)
 static struct gpiomux_setting sd_card_det_active_config = {
@@ -1229,7 +1227,6 @@ static struct msm_gpiomux_config sd_card_det __initdata = {
 };
 #endif
 
-#ifndef CONFIG_MACH_ONYX
 static struct msm_gpiomux_config external_pa_configs[] __initdata = {
 	{
 		.gpio = 73,
@@ -1238,9 +1235,8 @@ static struct msm_gpiomux_config external_pa_configs[] __initdata = {
 			[GPIOMUX_SUSPENDED] = &external_suspended_config,
 		},
 	},
-#endif
 
-#if !defined (CONFIG_MACH_N3) && !defined (CONFIG_MACH_ONYX)
+#ifndef CONFIG_MACH_N3
 	{
 		.gpio = 87,
 		.settings = {
@@ -2027,9 +2023,7 @@ void __init msm_8974_init_gpiomux(void)
 		msm_gpiomux_install(msm_sensor_configs, \
 				ARRAY_SIZE(msm_sensor_configs));
 
-#ifndef CONFIG_MACH_ONYX
 	msm_gpiomux_install(external_pa_configs, ARRAY_SIZE(external_pa_configs));
-#endif
 
 #ifdef CONFIG_MACH_ONYX
 	msm_gpiomux_install(&sd_card_det, 1);

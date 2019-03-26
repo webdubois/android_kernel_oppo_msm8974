@@ -21,19 +21,13 @@ config MACH_FIND7OP
 	select MACH_OPPO_MSM8974
 	bool "Oneplus"
 	help
-	  Support for the Oneplus One (bacon) variant
+	  Support for the Oneplus variant
 
 config MACH_N3
 	select MACH_OPPO_MSM8974
 	bool "N3"
 	help
 	  Support for the N3 variant
-	  
-config MACH_ONYX
-	select MACH_OPPO_MSM8974
-	bool "Oneplus X"
-	help
-	  Support for the Oneplus X (onyx) variant
 
 endmenu
 

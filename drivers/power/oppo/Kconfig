@@ -5,18 +5,36 @@ config BATTERY_BQ27541_OPPO
 	depends on I2C
 	default n
 	help
-	  Say Y here to enable support for batteries with BQ27541 (I2C) chips.
+	  Say Y here to enable support for batteries with BQ27541 (I2C) chips, except Oneplus X (see later dedicated config).
+
+config BATTERY_BQ27541_ONYX
+	tristate "Onyx BQ27541 battery driver"
+	depends on I2C
+	default n
+	help
+	  Say Y here to enable support for batteries with BQ27541 (I2C) chips for the Oneplus X.
 
 config HMAC_SHA1_BQ27541_OPPO
 	bool "BQ27541 HMAC SHA1 support"
 	depends on BATTERY_BQ27541_OPPO
 	help
-	  Say Y here to enable support for BQ27541 battery HMAC SHA1 support.
+	  Say Y here to enable support for BQ27541 battery HMAC SHA1 support, except Oneplus X (see later dedicated config).
+
+config HMAC_SHA1_BQ27541_ONYX
+	bool "BQ27541 HMAC SHA1 support for OnePlus X"
+	depends on BATTERY_BQ27541_ONYX
+	help
+	  Say Y here to enable support for BQ27541 battery HMAC SHA1 support for the Oneplus X.
 
 config BQ24196_CHARGER_OPPO
 	tristate "BQ24196 Charger driver"
 	help
-	  Say Y here to enable the BQ24196 battery charger device.
+	  Say Y here to enable the BQ24196 battery charger device, except Oneplus X (see later dedicated config).
+
+config BQ24196_CHARGER_ONYX
+	tristate "BQ24196 Charger driver for OnePlus X"
+	help
+	  Say Y here to enable the BQ24196 battery charger device, for Oneplus X.
 
 config QPNP_CHARGER_OPPO
 	tristate "QPNP Charger driver"
@@ -27,11 +45,22 @@ config QPNP_CHARGER_OPPO
 	  Say Y here to enable the switch mode battery charger
 	  and boost device which supports USB detection and charging. The driver
 	  also offers relevant information to userspace via the power supply
-	  framework.
+	  framework, except Oneplus X (see later dedicated config).
+
+config QPNP_CHARGER_ONYX
+	tristate "QPNP Charger driver for OnePlus X"
+	depends on SPMI
+	depends on OF_SPMI
+	depends on THERMAL_QPNP_ADC_TM
+	help
+	  Say Y here to enable the switch mode battery charger
+	  and boost device which supports USB detection and charging. The driver
+	  also offers relevant information to userspace via the power supply
+	  frameworks for Oneplus X.
 
 config PIC1503_FASTCG_OPPO
 	tristate "PIC1503 Fast-charge Driver"
 	help
-	  Say Y here to enable the PIC1503 fast charger
+	  Say Y here to enable the PIC1503 fast charger.
 
 endif
